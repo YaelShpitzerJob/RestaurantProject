@@ -1,0 +1,57 @@
+.contactlist{
+    .header-style{
+        box-shadow: 0px 6px 6px #bcbdbd !important;
+        color: white;
+        background-color: #db2828b5;      
+        font-size: 17px ;
+        &.s{ max-width: 200px !important;}
+        &.m{ max-width: 250px !important;}
+        &.l{ max-width: 500px !important;}
+    }    
+        .singal-colum{
+            text-align: center;
+            &.s{
+                width: 200px !important;
+                 max-width: 200px !important;
+            }
+            &.m{
+                width: 250px !important;
+                max-width: 250px !important;
+            }
+            &.l{
+                width: 500px !important;
+                max-width: 500px !important;
+            }
+        }
+
+    .buttoncreatecontact{
+      font-size: 23px;
+      width: 23vw;
+      margin: 0.5vw 83vh;
+    }
+}
+.modal-content{
+    .modal-header{
+        border-color: red;
+        .h1{
+        color: green;
+        text-align: center;
+        margin-left: 9vw;
+        }
+    }
+    .modal-body{
+    .btn-outline-success{
+     float: right;
+    }
+    .friendbutton{
+        margin-left: 82px;
+    }
+    .textfriend{
+       display: inline-block;
+       margin: 7px;
+    }
+    .form{
+        margin-left: 6vw;
+    }
+}
+}
