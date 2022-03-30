@@ -13,3 +13,9 @@ export default defineMessages({
     defaultMessage: 'This is the HomePage container!',
   },
 });
+
+export const messages = {
+  createOrder: 'Create Order',
+  trackOrder: 'Track your Order',
+  WelcomeRestaurantTitle:'Welcome to our restaurant!'
+}

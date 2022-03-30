@@ -1,29 +1,47 @@
 import React, { memo } from 'react';
+import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectContacts } from 'containers/App/selectors';
-import messages from './messages';
+import {messages} from './messages';
 
 import './index.scss';
 export function HomePage() {
   return (
     <div className="home-page">
-      <h1 className="h1-red">
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <h1>{messages.WelcomeRestaurantTitle}</h1>
+      <div className='nav-links'>
+        <NavLink to="/create-order">
+          <Button
+            variant="btn btn-outline-success"
+            className="contactlistbutton"
+          >
+            {messages.createOrder}
+          </Button>
+        </NavLink>
+        <NavLink to="/track-order">
+          <Button
+            variant="btn btn-outline-success"
+            className="contactlistbutton"
+          >
+            {messages.trackOrder}
+          </Button>
+        </NavLink>
+      </div>
     </div>
   );
 }
 
 HomePage.propTypes = {
-  contacts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  
 };
 
 const mapStateToProps = createStructuredSelector({
-  contacts: makeSelectContacts(),
+  
 });
 
 const withConnect = connect(mapStateToProps);

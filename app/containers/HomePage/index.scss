@@ -1,5 +1,22 @@
 .home-page{
-.h1-red{
-    color:red
+  width: 23%;
+  margin: auto;
+  padding: 10% 0;
+
+  h1{
+    color: red;
+    font-weight: bold;
+  }
+  .nav-links{
+    padding: 11% 0;
+    width: 80%;
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    
+    button{
+      width: 100%;
+      font-size: 21px;
+    }
   }
 }

@@ -1,0 +1,86 @@
+.create-order{
+  .form{
+    padding: 5% 0;
+    margin: auto;
+    width: 30%;
+    font-size: 20px;
+    input{
+      -webkit-appearance: none;
+    }
+    h1{
+      color: red;
+    }
+    button{
+      width: 45%;
+      font-size: 21px;
+    }
+    .btn-outline-success{
+      width: 20%;
+      margin: 0 15px;
+    }
+    .dishesMenu{
+      border: 2px solid black;
+      margin: 20px 0px;
+      padding: 13px 0px;
+      h3{
+        padding: 12px 20px 0px;
+        font-weight: bold;
+        color: red;
+      }
+      .menuDetais{
+        display: grid;
+        grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+        font-weight: bold;
+        justify-content: space-between;
+
+        div {
+          text-align: center;
+        }
+      }
+      .dishDetails{
+        display: grid;
+        grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+        justify-content: space-between;
+        padding: 1% 0;
+        
+        div{
+          text-align: center;
+          input{
+          width: 50%;
+          text-align: center;
+        }
+        }
+        
+      }
+      
+    }
+    .total-order{
+      position: absolute;
+      top: 15%;
+      right: 6%;
+      padding: 9px 12px;
+      border: 3px solid;
+      .header{
+        font-size: 25px;
+        font-weight: bold;
+        border-bottom: 2px solid;
+      }
+      button{
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+
+    
+  }
+  
+}
+.modal-content{
+  .modal-title{
+    font-weight: bold;
+    color: green;
+  }
+  .modal-body{
+    font-size: 20px;
+  }
+}

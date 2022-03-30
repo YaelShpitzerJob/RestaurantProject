@@ -5,6 +5,8 @@ const router = express.Router();
 const BASE_DIR = __dirname.replace('middlewares', '');
 const jsonPath = `${BASE_DIR}\\data\\data.json`;
 const bodyParser = require('body-parser');
+const JsonOrdersDataPath = `${BASE_DIR}\\data\\ordersData.json`;
+const JsonKitchenDataPath = `${BASE_DIR}\\data\\kitchenData.json`;
 
 router.use(
   bodyParser.urlencoded({
@@ -34,13 +36,13 @@ router.get('/get/:id', (req, res) => {
 
 router.post('/add', (req, res) => {
   fs.readFile(jsonPath, 'utf8', (err, data) => {
-    const list = JSON.parse(data);
-    const item = req.body;
-    const newList = _addItem(list, item);
-    const jsonData = JSON.stringify(newList);
+    // const list = JSON.parse(data);
+     const item = req.body;
+    // const newList = _addItem(list, item);
+    // const jsonData = JSON.stringify(newList);
     fs.writeFile(jsonPath, jsonData, writeFileErr => {
       if (!writeFileErr) {
-        res.end(jsonData);
+        res.end(item);
       } else {
         res.end(data);
       }
@@ -113,16 +115,78 @@ router.post('/deletechilditem/:id/:idchild', (req, res) => {
     });
   });
 });
-// Private functions
+
+
+// NEWWW
+router.get('/kitchendetails', (req, res) => {
+  fs.readFile(JsonKitchenDataPath, 'utf8', (err, data) => {
+    res.end(data);
+  });
+});
+
+router.get('/orders', (req, res) => {
+  fs.readFile(JsonOrdersDataPath, 'utf8', (err, data) => {
+    res.end(data);
+  });
+});
+
+router.post('/addorder', (req, res) => {
+  fs.readFile(JsonOrdersDataPath, 'utf8', (err, data) => {
+    const list = JSON.parse(data);
+    const item = req.body;
+    const newList = _addOrder(list, item);
+    const jsonData = JSON.stringify(newList);
+    fs.writeFile(JsonOrdersDataPath, jsonData, writeFileErr => {
+      if (!writeFileErr) {
+        res.end(jsonData);
+      } else {
+        res.end(data);
+      }
+    });
+  });
+});
+
+router.get('/getorder/:id', (req, res) => {
+  fs.readFile(JsonOrdersDataPath, 'utf8', (err, data) => {
+    const list = JSON.parse(data);
+    const { id } = req.params;
+    const item = _getItem(list, id);
+    res.end(JSON.stringify(item));
+  });
+});
+
+const _addOrder = (list, item) => {
+  let lastId = -1;
+  if (list.length > 0)
+    lastId = parseInt(list[list.length - 1].orderId);
+  const newItem = { orderId: lastId + 1, ...item };
+  const newList = [...list];
+  newList.push(newItem);
+  return newList;
+};
 
 function _getIndex(list, id) {
-  return list.findIndex(item => item.id.toString() === id.toString());
+  return list.findIndex(item => item.orderId.toString() === id.toString());
 }
-// find the current contact in the list
+
 function _getItem(list, id) {
   const currentItem = list[_getIndex(list, id)];
   return currentItem;
 }
+// Private functions
+
+
+
+
+
+// function _getIndex(list, id) {
+//   return list.findIndex(item => item.id.toString() === id.toString());
+// }
+// // find the current contact in the list
+// function _getItem(list, id) {
+//   const currentItem = list[_getIndex(list, id)];
+//   return currentItem;
+// }
 
 // Updates a contact and returns an updated list
 function _updateItem(list, updateItem) {

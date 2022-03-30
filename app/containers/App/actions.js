@@ -1,72 +1,102 @@
 import {
-  UPDATE_CONTACT,ADD_CONTACT,
-  GET_CONTACT,
-  
-  DELETE_CONTACT,
-  LOAD_CONTACT_SUCCESS,
-  LOAD_CONTACT_ERROR,
-  LOAD_CONTACT
+  LOAD_KITCHEN_DETAILS,
+  LOAD_KITCHEN_DETAILS_SUCCESS,
+  LOAD_KITCHEN_DETAILS_ERROR,
+  LOAD_ORDERS,
+  LOAD_ORDERS_SUCCESS,
+  LOAD_ORDERS_ERROR,
+  ADD_ORDER,
+  ADD_ORDER_SUCCESS,
+  ADD_ORDER_ERROR,
+  RESET_CURRENT_ORDER,
+  GET_ORDER,
+  GET_ORDER_SUCCESS,
+  GET_ORDER_ERROR
 } from './constants';
 
-//GET CONTACT LIST
-
-/**
- * Load the contacts, this action starts the request saga
- *
- * @return {object} An action object with a type of LOAD_Contact
- */
-export function loadContacts() {
+// GET MENU
+export function loadKitchenDetails() {
   return {
-    type: LOAD_CONTACT,
+    type: LOAD_KITCHEN_DETAILS,
   };
 }
-
-/**
- * Dispatched when the contacts are loaded by the request saga
- *
- * @param  {array} contacts The contactsitory data
- * @param  {string} username The current username
- *
- * @return {object}      An action object with a type of LOAD_Contact_SUCCESS passing the contacts
- */
-export function contactsLoaded(contacts, username) {
+export function kitchenDetailsLoaded(dishesMenu,chefsNumber) {
   return {
-    type: LOAD_CONTACT_SUCCESS,
-    contacts,
-    username,
+    type: LOAD_KITCHEN_DETAILS_SUCCESS,
+    dishesMenu,
+    chefsNumber
   };
 }
-
-/**
- * Dispatched when loading the contacts fails
- *
- * @param  {object} error The error
- *
- * @return {object}       An action object with a type of LOAD_Contact_ERROR passing the error
- */
-export function contactLoadingError(error) {
+export function kitchenDetailsLoadingError(error) {
   return {
-    type: LOAD_CONTACT_ERROR,
+    type: LOAD_KITCHEN_DETAILS_ERROR,
     error,
   };
 }
 
-
-
-//UPDATE CONTACT
-export function updateContact(contact) {
+// GET ORDERS
+export function loadOrders() {
   return {
-    type: UPDATE_CONTACT,
-    contact
+    type: LOAD_ORDERS,
+  };
+}
+export function ordersLoaded(orders) {
+  return {
+    type: LOAD_ORDERS_SUCCESS,
+    orders
+  };
+}
+export function ordersLoadingError(error) {
+  return {
+    type: LOAD_ORDERS_ERROR,
+    error,
   };
 }
 
-
-//ADD CONTACT
-export function addContact(contact) {
-
+// ADD ORDER
+export function addOrder(order) {
   return {
-    type: ADD_CONTACT,
-    contact
+    type: ADD_ORDER,
+    order
+  };
+}
+export function addOrderSuccess(order,orders) {
+  return {
+    type: ADD_ORDER_SUCCESS,
+    orders,
+    order
+  };
+}
+export function addOrderError(error) {
+  return {
+    type: ADD_ORDER_ERROR,
+    error,
+  };
+}
+
+// SEARCH ORDER
+export function getOrder(orderId) {
+  return {
+    type: GET_ORDER,
+    orderId
+  };
+}
+export function getOrderSuccess(order) {
+  return {
+    type: GET_ORDER_SUCCESS,
+    order
+  };
+}
+export function getOrderError(error) {
+  return {
+    type: GET_ORDER_ERROR,
+    error,
+  };
+}
+
+// RESET CURRENT ORDER
+export function resetCurrentOrder() {
+  return {
+    type: RESET_CURRENT_ORDER
   };
 }
